@@ -22,8 +22,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#bb000000"
-                android:text="压缩前："/>
+                android:text="压缩前："
+                android:textColor="#bb000000"/>
 
             <ImageView
                 android:id="@+id/ivBeforeCompress"
@@ -34,8 +34,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#bb000000"
-                android:text="压缩后："/>
+                android:text="压缩后："
+                android:textColor="#bb000000"/>
 
             <ImageView
                 android:id="@+id/ivAfterCompress"
@@ -44,10 +44,10 @@
 
             <TextView
                 android:id="@+id/tvTips"
-                android:background="#11000000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:background="#11000000"
                 android:text=" "/>
 
             <TextView
@@ -66,8 +66,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#bb000000"
-                    android:text="一、质量压缩："/>
+                    android:text="一、质量压缩："
+                    android:textColor="#bb000000"/>
 
                 <EditText
                     android:id="@+id/etQuality"
@@ -92,8 +92,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#bb000000"
-                    android:text="二、采样率压缩："/>
+                    android:text="二、采样率压缩："
+                    android:textColor="#bb000000"/>
 
                 <EditText
                     android:id="@+id/etSampleSize"
@@ -118,8 +118,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#bb000000"
-                    android:text="三、Matrix缩放压缩："/>
+                    android:text="三、Matrix缩放压缩："
+                    android:textColor="#bb000000"/>
 
                 <EditText
                     android:id="@+id/etSx"
@@ -150,8 +150,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#bb000000"
-                    android:text="四、RGB_565压缩："/>
+                    android:text="四、RGB_565压缩："
+                    android:textColor="#bb000000"/>
 
                 <Button
                     android:id="@+id/btnRGB565Compress"
@@ -168,8 +168,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#bb000000"
-                    android:text="五、createScaledBitmap压缩："/>
+                    android:text="五、createScaledBitmap压缩："
+                    android:textColor="#bb000000"/>
 
                 <EditText
                     android:id="@+id/etDstWidth"
@@ -202,9 +202,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="应用：质量压缩，将图片压缩到指定size："
                     android:textColor="#bb000000"
-                    android:textSize="18sp"
-                    android:text="应用：质量压缩，将图片压缩到指定size："/>
+                    android:textSize="18sp"/>
 
                 <EditText
                     android:id="@+id/etQualityLimit"
@@ -220,6 +220,36 @@
                     android:layout_height="wrap_content"
                     android:text="压缩"/>
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivCropedImg"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCropAlbum"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="图片裁剪（相册）"/>
+
+                <Button
+                    android:id="@+id/btnCropCamera"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="图片裁剪（拍照）"/>
+            </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
