@@ -4,9 +4,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 public class CompressUtil {
     private static final String TAG = "CompressUtil";
@@ -34,6 +36,42 @@ public class CompressUtil {
                 + "  bytes.length=" + (bytes.length / 1024) + "KB"
                 + "  quality=" + quality);
         return bm;
+    }
+
+    /**
+     * 将图片压缩到指定size
+     * <p>
+     * 动态降低图片quality
+     *
+     * @param bit
+     * @param maxFileSize 最大文件大小，单位KB
+     */
+    public static CompressResult compressBmp2LimitSize(Bitmap bit, int maxFileSize) {
+        //进行有损压缩
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int quality = 100;
+        bit.compress(Bitmap.CompressFormat.JPEG, quality, baos);    //质量压缩方法，把压缩后的数据存放到baos中 (100表示不压缩，0表示压缩到最小)
+        int baosLength = baos.toByteArray().length;
+        while (baosLength / 1024 > maxFileSize) {   //循环判断如果压缩后图片是否大于maxMemmorrySize,大于继续压缩
+            baos.reset();   //重置baos即让下一次的写入覆盖之前的内容
+            quality = Math.max(0, quality - 10);    //图片质量每次减少10
+            bit.compress(Bitmap.CompressFormat.JPEG, quality, baos);    //将压缩后的图片保存到baos中
+            baosLength = baos.toByteArray().length;
+            if (quality == 0)   //如果图片的质量已降到最低，则不再进行压缩
+                break;
+        }
+        Bitmap bm = BitmapFactory.decodeByteArray(baos.toByteArray(), 0, baos.toByteArray().length);
+
+        String tip = "压缩后图片的大小" + ((float) bm.getByteCount() / 1024 / 1024)
+                + "M  宽度为" + bm.getWidth() + "  高度为" + bm.getHeight()
+                + "  bytes.length=" + (baos.toByteArray().length / 1024) + "KB"
+                + "  quality=" + quality;
+        Log.i(TAG, tip);
+
+        File file = new File(Environment.getExternalStorageDirectory() + "/compressTest/" + System.currentTimeMillis() + ".jpg");
+        FileUtil.writeBitmap2File(file, bm, quality);
+
+        return new CompressResult(bm, tip);
     }
 
     /**
@@ -117,4 +155,5 @@ public class CompressUtil {
                 + bm.getWidth() + " 高度为" + bm.getHeight());
         return bm;
     }
+
 }
