@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#bb000000"
+                android:text="压缩前："/>
+
+            <ImageView
+                android:id="@+id/ivBeforeCompress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/animal2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#bb000000"
+                android:text="压缩后："/>
+
+            <ImageView
+                android:id="@+id/ivAfterCompress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvTips"
+                android:background="#11000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=" "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="压缩方式："
+                android:textColor="#bb000000"
+                android:textSize="18sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#bb000000"
+                    android:text="一、质量压缩："/>
+
+                <EditText
+                    android:id="@+id/etQuality"
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:hint="质量范围0-100"
+                    android:inputType="number"
+                    android:maxLength="3"/>
+
+                <Button
+                    android:id="@+id/btnQualityCompress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="压缩"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#bb000000"
+                    android:text="二、采样率压缩："/>
+
+                <EditText
+                    android:id="@+id/etSampleSize"
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:hint="采样率(2的n次方)"
+                    android:inputType="number"
+                    android:maxLength="2"/>
+
+                <Button
+                    android:id="@+id/btnSampleSizeCompress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="压缩"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#bb000000"
+                    android:text="三、Matrix缩放压缩："/>
+
+                <EditText
+                    android:id="@+id/etSx"
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:hint="缩放比例  sx（float）"
+                    android:maxLength="5"/>
+
+                <EditText
+                    android:id="@+id/etSy"
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:hint="缩放比例  sy（float）"
+                    android:maxLength="5"/>
+
+                <Button
+                    android:id="@+id/btnMatrixScaleCompress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="压缩"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#bb000000"
+                    android:text="四、RGB_565压缩："/>
+
+                <Button
+                    android:id="@+id/btnRGB565Compress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="压缩"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#bb000000"
+                    android:text="五、createScaledBitmap压缩："/>
+
+                <EditText
+                    android:id="@+id/etDstWidth"
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:hint="缩放Width"
+                    android:inputType="number"
+                    android:maxLength="4"/>
+
+                <EditText
+                    android:id="@+id/etDstHeight"
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:hint="缩放Height"
+                    android:inputType="number"
+                    android:maxLength="4"/>
+
+                <Button
+                    android:id="@+id/btnCreateScaledBitmapCompress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="压缩"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
